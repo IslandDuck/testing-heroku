@@ -5,6 +5,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 // const serveStatic = require('serve-static')
 
+const PORT = process.env.PORT || 8081
 const app = express()
 
 // logging into console
@@ -23,4 +24,7 @@ app.post('/register', (req, res) => {
 })
 
 // app.use(serveStatic(path.join(__dirname, 'client/src')))
-app.listen(process.env.PORT || 8081)
+// app.use(serveStatic(`../../client/src`))
+app.listen(PORT, () => {
+  console.log(`Server is up on ${PORT}`)
+})
