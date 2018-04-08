@@ -11,16 +11,25 @@ module.exports = {
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential',
+    'plugin:vue/recommended',
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     'standard'
   ],
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'vue',
+    'import-order-autofix'
   ],
   // add your custom rules here
   rules: {
+    'vue/attributes-order': 1,
+    "vue/max-attributes-per-line": [2, {
+      "singleline": 1,
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": true
+      }
+    }],
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
