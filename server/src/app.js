@@ -1,7 +1,9 @@
 const express = require('express')
+// const path = require('path')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+// const serveStatic = require('serve-static')
 
 const app = express()
 
@@ -14,10 +16,11 @@ app.use(bodyParser.json())
 // cross origin requests are allowed to that app
 app.use(cors())
 
-app.get('/status', (req, res) => {
+app.post('/register', (req, res) => {
   res.send({
-    message: 'Hello World'
+    message: `Hello ${req.body.email}! Your user was registered! Have fun!`
   })
 })
 
+// app.use(serveStatic(path.join(__dirname, 'client/src')))
 app.listen(process.env.PORT || 8081)
