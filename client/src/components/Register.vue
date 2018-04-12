@@ -56,9 +56,9 @@ export default {
           email: this.email,
           password: this.password
         })
-        console.log('Success', response.data)
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.token)
       } catch (error) {
-        console.log('Failed', error.response.data)
         this.error = error.response.data.error
       }
     }

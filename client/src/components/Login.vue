@@ -7,7 +7,7 @@
                    dark
                    class="cyan">
           <v-toolbar-title >
-            Register
+            Login
           </v-toolbar-title>
         </v-toolbar>
 
@@ -52,9 +52,10 @@ export default {
           email: this.email,
           password: this.password
         })
-        console.log('Success', response.data)
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.user)
       } catch (error) {
-        console.log('Failed', error.response.data)
+        console.log(error)
         this.error = error.response.data.error
       }
     }
