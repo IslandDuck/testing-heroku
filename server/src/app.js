@@ -19,10 +19,14 @@ app.use(cors())
 
 require('./routes')(app)
 
-sequelize.sync().then(() => {
+// use sync({force: true}) to clean DB. DO NOT USE ON PRODUCTION OF COURSE
+sequelize
+  // .sync({force: true})
+  .sync()
+  .then(() => {
   // app.use(serveStatic(path.join(__dirname, 'client/src')))
   // app.use(serveStatic(`../../client/src`))
-  app.listen(PORT, () => {
-    console.log(`Server is up on ${PORT}`)
+    app.listen(PORT, () => {
+      console.log(`Server is up on ${PORT}`)
+    })
   })
-})
