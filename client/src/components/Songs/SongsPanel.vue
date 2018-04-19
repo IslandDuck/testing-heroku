@@ -2,14 +2,14 @@
   <Panel title="Songs">
     <v-btn
       slot="action"
+      :to="{name: 'songs-create'}"
       color="cyan accent-2"
       fab
       light
       medium
       absolute
       right
-      middle
-      @click="navigateTo({name: 'songs-create'})">
+      middle>
       <v-icon>add</v-icon>
     </v-btn>
     <div v-for="song in songs"
@@ -29,15 +29,15 @@
           </div>
 
           <v-btn
-            class="cyan"
-            color="#fff"
-            dark
-            @click="navigateTo({
+            :to="{
               name: 'song',
               params: {
                 songId: song.id
               }
-            })"
+            }"
+            class="cyan"
+            color="#fff"
+            dark
           >View Song</v-btn>
         </v-flex>
 
@@ -59,14 +59,19 @@ export default {
       songs: null
     }
   },
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
+  },
   async mounted () {
     // be sure to return data in the end to get real songs.
     this.songs = (await SongsService.index()).data
   },
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    }
   }
 }
 </script>

@@ -21,8 +21,12 @@
 
         <v-btn
           slot="action"
-          color="cyan accent-2"
-          @click="navigateTo({name: 'songs-edit'})">
+          :to="{name: 'songs-edit', params() {
+            return {
+              songId: song.id
+            }
+          }}"
+          color="cyan accent-2">
           Edit
         </v-btn>
       </v-flex>
@@ -44,9 +48,6 @@ export default {
     }
   },
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    }
   }
 }
 </script>

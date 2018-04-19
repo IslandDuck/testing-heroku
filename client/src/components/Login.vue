@@ -13,7 +13,7 @@
             type="password"
             label="Password" />
           <br>
-          <div class="error"
+          <div class="danger-alert"
                v-html="error"/>
           <v-btn class="cyan"
                  color="#fff"
@@ -45,6 +45,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         console.log(error)
         this.error = error.response.data.error
