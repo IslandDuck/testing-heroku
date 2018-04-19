@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import VueYouTubeEmbed from 'vue-youtube-embed'
+import Panel from '@/components/UI/Panel'
 import { sync } from 'vuex-router-sync'
 import 'vuetify/dist/vuetify.min.css'
 import store from '@/store'
@@ -11,6 +13,9 @@ import store from '@/store'
 Vue.config.productionTip = false
 
 Vue.use(Vuetify)
+Vue.use(VueYouTubeEmbed)
+
+Vue.component('Panel', Panel)
 
 sync(store, router)
 /* eslint-disable no-new */

@@ -57,7 +57,7 @@
         class="cyan"
         color="#fff"
         dark
-        @click="create"
+        @click="save"
       >Create a Song</v-btn>
     </v-flex>
   </v-layout>
@@ -85,8 +85,16 @@ export default {
       }
     }
   },
+  async mounted () {
+    try {
+      const songId = this.$store.state.route.params.songId
+      this.song = (await SongsService.show(songId)).data
+    } catch (error) {
+      console.log(error)
+    }
+  },
   methods: {
-    async create () {
+    async save () {
       this.error = null
       const allFieldsFilledIn = Object
         .keys(this.song)
@@ -94,11 +102,11 @@ export default {
 
       if (!allFieldsFilledIn) {
         this.error = 'Please fill in all the required fields.'
-        return
       }
+
       try {
-        await SongsService.post(this.song)
-        this.$router.push({name: 'songs'})
+        await SongsService.put(this.song)
+        this.$router.go(-1)
       } catch (error) {
         console.log(error)
       }
