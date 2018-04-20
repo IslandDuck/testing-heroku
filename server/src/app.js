@@ -1,5 +1,5 @@
 const express = require('express')
-// const path = require('path')
+const path = require('path')
 // const serveStatic = require('serve-static')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -16,6 +16,8 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 // cross origin requests are allowed to that app
 app.use(cors())
+
+app.use(express.static(path.join(__dirname, '../../client/dist')))
 
 require('./routes')(app)
 
