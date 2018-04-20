@@ -23,9 +23,9 @@
           required
           label="Album" />
         <v-text-field
-          v-model="song.albumImageuUrl"
+          v-model="song.albumImageUrl"
           required
-          label="AlbumImageuUrl" />
+          label="albumImageUrl" />
         <v-text-field
           v-model="song.youtubeID"
           :rules="[rules.required]"
@@ -74,7 +74,7 @@ export default {
         artist: null,
         genre: null,
         album: null,
-        albumImageuUrl: null,
+        albumImageUrl: null,
         youtubeID: null,
         lyrics: null,
         tab: null

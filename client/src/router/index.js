@@ -44,7 +44,6 @@ export default new Router({
     },
     {
       path: '*',
-      name: 'default',
       redirect: 'songs'
     }
   ]

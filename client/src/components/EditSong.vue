@@ -23,9 +23,9 @@
           required
           label="Album" />
         <v-text-field
-          v-model="song.albumImageuUrl"
+          v-model="song.albumImageUrl"
           required
-          label="AlbumImageuUrl" />
+          label="albumImageUrl" />
         <v-text-field
           v-model="song.youtubeID"
           :rules="[rules.required]"
@@ -57,6 +57,12 @@
         class="cyan"
         color="#fff"
         dark
+        @click="$router.go(-1)"
+      >Back</v-btn>
+      <v-btn
+        class="cyan"
+        color="#fff"
+        dark
         @click="save"
       >Create a Song</v-btn>
     </v-flex>
@@ -74,7 +80,7 @@ export default {
         artist: null,
         genre: null,
         album: null,
-        albumImageuUrl: null,
+        albumImageUrl: null,
         youtubeID: null,
         lyrics: null,
         tab: null

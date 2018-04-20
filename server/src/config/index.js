@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
+const path = require('path')
 const operatorsAliases = {
   $eq: Op.eq,
   $ne: Op.ne,
@@ -45,7 +46,7 @@ module.exports = {
     options: {
       dialect: process.env.DIALECT || 'sqlite',
       host: process.env.HOST || 'localhost',
-      storage: './tabtracker.sqlite',
+      storage: path.resolve(__dirname, '../../tabtracker.sqlite'),
       operatorsAliases
     }
   },

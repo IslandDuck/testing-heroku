@@ -4,7 +4,7 @@
              class="cyan">
 
     <v-toolbar-title class="mr-4">
-      <router-link :to="{name: 'default'}"
+      <router-link :to="{name: 'songs'}"
                    tag="span"
                    class="home">
         TabTracker
@@ -21,19 +21,19 @@
     <v-spacer/>
 
     <v-toolbar-items>
-      <v-btn v-if="!$store.state.isUserLoggedIn"
+      <v-btn v-if="!isUserLoggedIn"
              :to="{name: 'login'}"
              flat
              dark>
         Login
       </v-btn>
-      <v-btn v-if="!$store.state.isUserLoggedIn"
+      <v-btn v-if="!isUserLoggedIn"
              :to="{name: 'register'}"
              flat
              dark>
         Sign up
       </v-btn>
-      <v-btn v-if="$store.state.isUserLoggedIn"
+      <v-btn v-if="isUserLoggedIn"
              flat
              dark
              @click="logout">
@@ -45,11 +45,16 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 export default {
   data () {
     return {
       key: 'value'
     }
+  },
+  computed: {
+    ...mapState(['isUserLoggedIn'])
   },
   methods: {
     logout () {

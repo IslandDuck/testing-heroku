@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-layout>
-
       <v-flex xs6>
         <SongMetadata :song="song"/>
       </v-flex>
@@ -9,7 +8,6 @@
       <v-flex xs6>
         <YouTube :youtube-id="song.youtubeID"/>
       </v-flex>
-
     </v-layout>
 
     <v-layout class="mt-4">

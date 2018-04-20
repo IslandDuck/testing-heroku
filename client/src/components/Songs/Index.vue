@@ -1,7 +1,10 @@
 <template>
   <v-layout>
+    <v-flex xs6>
+      <SongsBookmarks />
+    </v-flex>
     <v-flex xs6
-            offset-xs3>
+            class="ml-4">
       <SongsSearchPanel/>
       <SongsPanel class="mt-4"/>
     </v-flex>
@@ -11,11 +14,13 @@
 <script>
 import SongsPanel from './SongsPanel'
 import SongsSearchPanel from './SongsSearchPanel'
+import SongsBookmarks from './SongsBookmarks'
 
 export default {
   components: {
     SongsPanel,
-    SongsSearchPanel
+    SongsSearchPanel,
+    SongsBookmarks
   }
 }
 </script>
