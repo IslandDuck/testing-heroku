@@ -19,6 +19,8 @@ app.use(cors())
 
 app.use(express.static(path.join(__dirname, '../../client/dist')))
 
+require('./passport')
+
 require('./routes')(app)
 
 // use sync({force: true}) to clean DB. DO NOT USE ON PRODUCTION OF COURSE

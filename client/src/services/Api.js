@@ -3,8 +3,7 @@ import store from '@/store'
 
 export default () => {
   return axios.create({
-    // baseURL: `http://localhost:8081/`
-    baseURL: `https://tab-tracker-demo.herokuapp.com/`, // <-- url copied from `heroku create ...` command
+    baseURL: `http://localhost:8081/`,
     headers: {
       Authorization: `Bearer ${store.state.token}`
     }

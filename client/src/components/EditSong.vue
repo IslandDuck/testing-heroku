@@ -64,7 +64,7 @@
         color="#fff"
         dark
         @click="save"
-      >Create a Song</v-btn>
+      >Save</v-btn>
     </v-flex>
   </v-layout>
 </template>
@@ -108,6 +108,7 @@ export default {
 
       if (!allFieldsFilledIn) {
         this.error = 'Please fill in all the required fields.'
+        return
       }
 
       try {
