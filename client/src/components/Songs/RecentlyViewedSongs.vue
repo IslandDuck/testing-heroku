@@ -45,7 +45,7 @@ export default {
   },
   async mounted () {
     if (this.isUserLoggedIn) {
-      console.log('making histories request')
+      // console.log('making histories request')
       this.histories = (await SongsHistoryService.index()).data
     }
   }

@@ -7,35 +7,35 @@ const AuthenticationControllerPolicy = require('./policies/AuthenticationControl
 const isAuthenticated = require('./policies/isAuthenticated')
 
 module.exports = (app) => {
-  app.post('/register',
+  app.post('/api/register',
     AuthenticationControllerPolicy.register,
     AuthenticationController.register)
 
-  app.post('/login',
+  app.post('/api/login',
     AuthenticationController.login)
-  app.get('/songs',
+  app.get('/api/songs',
     SongsController.index)
-  app.get('/songs/:songId',
+  app.get('/api/songs/:songId',
     SongsController.show)
-  app.put('/songs/:songId',
+  app.put('/api/songs/:songId',
     SongsController.put)
-  app.post('/songs',
+  app.post('/api/songs',
     SongsController.post)
 
-  app.get('/bookmarks',
+  app.get('/api/bookmarks',
     isAuthenticated,
     BookmarksController.index)
-  app.post('/bookmarks',
+  app.post('/api/bookmarks',
     isAuthenticated,
     BookmarksController.post)
-  app.delete('/bookmarks/:bookmarkId',
+  app.delete('/api/bookmarks/:bookmarkId',
     isAuthenticated,
     BookmarksController.delete)
 
-  app.get('/histories',
+  app.get('/api/histories',
     isAuthenticated,
     HistoriesController.index)
-  app.post('/histories',
+  app.post('/api/histories',
     isAuthenticated,
     HistoriesController.post)
 }

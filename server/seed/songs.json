@@ -44,7 +44,7 @@
     "artist": "asdf",
     "genre": "asdf",
     "album": "asdf",
-    "albumImageUrl": "asdf",
+    "albumImageUrl": null,
     "youtubeID": "asdf",
     "lyrics": "asdf",
     "tab": "asdfasdf"

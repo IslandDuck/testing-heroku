@@ -1,6 +1,7 @@
 'use strict'
 const path = require('path')
 const utils = require('./utils')
+const webpack = require('webpack')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
@@ -88,5 +89,13 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      // set api_url from process env.
+      // will be used inside the client build script
+      // or localhost for default development environment
+      __API_URL__: JSON.stringify(process.env.API_URL || 'http://localhost:8081/api')
+    })
+  ]
 }

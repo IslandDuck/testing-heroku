@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const serveStatic = require('serve-static')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -19,8 +18,8 @@ app.use(cors())
 
 require('./passport')
 
-// serving static files for heroku
-app.use(serveStatic(path.join(__dirname, '../../client/dist')))
+// serving static files. Necessary for heroku deployment
+app.use(express.static(path.join(__dirname, '../../', 'client/dist')))
 
 require('./routes')(app)
 

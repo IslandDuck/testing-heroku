@@ -45,9 +45,9 @@ export default {
   },
   async mounted () {
     if (this.isUserLoggedIn) {
-      console.log('making bookmarks request')
+      // console.log('making bookmarks request')
       this.bookmarks = (await BookmarksService.index()).data
-      console.log(this.bookmarks)
+      // console.log(this.bookmarks)
     }
   }
 }
