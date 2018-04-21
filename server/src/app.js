@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-// const serveStatic = require('serve-static')
+const serveStatic = require('serve-static')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -17,9 +17,10 @@ app.use(bodyParser.json())
 // cross origin requests are allowed to that app
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, '../../client/dist')))
-
 require('./passport')
+
+// serving static files for heroku
+app.use(serveStatic(path.join(__dirname, '../../client/dist')))
 
 require('./routes')(app)
 
@@ -28,8 +29,6 @@ sequelize
   // .sync({force: true})
   .sync()
   .then(() => {
-  // app.use(serveStatic(path.join(__dirname, 'client/src')))
-  // app.use(serveStatic(`../../client/src`))
     app.listen(PORT, () => {
       console.log(`Server is up on ${PORT}`)
     })

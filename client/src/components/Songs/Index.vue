@@ -23,7 +23,6 @@ import SongsSearchPanel from './SongsSearchPanel'
 import SongsBookmarks from './SongsBookmarks'
 import RecentlyViewedSongs from './RecentlyViewedSongs'
 import {mapState} from 'vuex'
-import SongsHistoryService from '@/services/SongsHistoryService'
 
 export default {
   components: {
